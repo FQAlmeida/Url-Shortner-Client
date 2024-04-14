@@ -47,5 +47,8 @@
 	"dependencies": {
 		"firebase": "^10.8.0",
 		"firebaseui": "^6.1.0"
+	},
+	"engines": {
+		"node": "18.x"
 	}
 }
