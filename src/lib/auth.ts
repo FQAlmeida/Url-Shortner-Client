@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import type { FirebaseApp } from 'firebase/app';
 import type { Firestore } from 'firebase/firestore';
 import type { Auth } from 'firebase/auth';
@@ -10,11 +10,14 @@ export let app: FirebaseApp;
 export let auth: Auth;
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    apiKey: import.meta.env.FIREBASE_API_KEY,
+    appId: import.meta.env.FIREBASE_APP_ID,
     // useEmulator: import.meta.env.VITE_FIREBASE_USE_EMULATOR === 'true',
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN
+    authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN
 };
+
+console.log(firebaseConfig);
+
 
 export const initializeFirebase = () => {
     if (!browser) {
@@ -23,5 +26,6 @@ export const initializeFirebase = () => {
     if (!app) {
         app = initializeApp(firebaseConfig);
         auth = getAuth(app);
+        console.log(auth);
     }
 };
