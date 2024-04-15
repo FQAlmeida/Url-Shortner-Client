@@ -16,9 +16,6 @@ const firebaseConfig = {
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN
 };
 
-console.log(firebaseConfig);
-
-
 export const initializeFirebase = () => {
     if (!browser) {
         throw new Error("Can't use the Firebase client on the server.");
@@ -26,6 +23,5 @@ export const initializeFirebase = () => {
     if (!app) {
         app = initializeApp(firebaseConfig);
         auth = getAuth(app);
-        console.log(auth)
     }
 };
