@@ -27,7 +27,7 @@
 						uid: user?.uid
 					}
 				});
-				goto('/');
+				goto('/dashboard');
 			})
 			.catch((error) => {
 				return error;
