@@ -36,7 +36,7 @@
 	let lPromise: Promise<UserCredential> | undefined = undefined;
 	async function loginWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		await signInWithPopup(auth, provider)
+		lPromise = signInWithPopup(auth, provider)
 			.then((result) => {
 				console.log(result);
 
@@ -57,6 +57,7 @@
 				console.error(error);
 				return error;
 			});
+		await lPromise;
 	}
 </script>
 
