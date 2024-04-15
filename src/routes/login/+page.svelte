@@ -33,10 +33,9 @@
 				return error;
 			});
 	}
-	let lPromise: Promise<UserCredential> | undefined = undefined;
 	async function loginWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		lPromise = signInWithPopup(auth, provider)
+		await signInWithPopup(auth, provider)
 			.then((result) => {
 				console.log(result);
 
@@ -57,19 +56,10 @@
 				console.error(error);
 				return error;
 			});
-		await lPromise;
 	}
 </script>
 
 <Heading class="text-center text-2xl font-extrabold">Login</Heading>
-{lPromise}
-{#if lPromise}
-	{#await lPromise}
-		<p>waiting</p>
-	{:then done}
-		{done}
-	{/await}
-{/if}
 <form>
 	<div class="mb-6 flex flex-col gap-3">
 		<div class="">
