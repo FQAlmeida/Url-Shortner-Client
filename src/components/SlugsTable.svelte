@@ -23,13 +23,12 @@
 	let current_delete = '';
 	let current_update = '';
 	$: delete_slug = $slugs.find((slug) => slug.id === current_delete);
-	$: slug_base =
-		$slugs.find((slug) => slug.id === current_update) ?? ({} as Slug);
+	$: slug_base = $slugs.find((slug) => slug.id === current_update);
 </script>
 
 <div class="flex flex-col gap-4">
-	<Heading class="text-center text-2xl">Gereciar Slugs</Heading>
-	<Table shadow hoverable divClass="w-full table-fixed">
+	<Heading class="text-center text-2xl">Gerenciar Slugs</Heading>
+	<Table shadow hoverable divClass="w-full table-fixed overflow-auto">
 		<TableHead>
 			<TableHeadCell>ID</TableHeadCell>
 			<TableHeadCell>Redirect</TableHeadCell>
@@ -39,14 +38,21 @@
 		<TableBody tableBodyClass="divide-y">
 			{#each $slugs as slug}
 				<TableBodyRow>
-					<TableBodyCell tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min">{slug.id}</TableBodyCell>
-					<TableBodyCell tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min">
+					<TableBodyCell
+						tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min"
+						>{slug.id}</TableBodyCell
+					>
+					<TableBodyCell
+						tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min"
+					>
 						{slug.redirect}
 					</TableBodyCell>
-					<TableBodyCell tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min">
+					<TableBodyCell
+						tdClass="px-6 py-4 whitespace-wrap font-medium text-balance w-min"
+					>
 						{slug.slug}
 					</TableBodyCell>
-					<TableBodyCell tdClass="">
+					<TableBodyCell>
 						<Button
 							size="sm"
 							on:click={() => {
@@ -66,7 +72,7 @@
 							<TrashBinSolid size="sm" />
 						</Button>
 					</TableBodyCell>
-					<TableBodyCell tdClass="">
+					<TableBodyCell>
 						<Button size="sm" href={'/' + slug.slug} target="_blank">
 							Testar
 						</Button>
@@ -99,4 +105,6 @@
 		<Button color="alternative">Cancelar</Button>
 	</div>
 </Modal>
-<UpdateSlug {slug_base} bind:modal_update_open={show_update_modal} />
+{#if slug_base}
+	<UpdateSlug {slug_base} bind:modal_update_open={show_update_modal} />
+{/if}

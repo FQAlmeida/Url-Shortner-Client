@@ -28,39 +28,38 @@
 		<span
 			class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
 		>
-			URL Shortner
+			URL Shortener
 		</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
-	<div class="flex flex-row">
-		<NavUl {hidden}>
-			{#if loggedIn}
-				<A
-					on:click={async () => {
-						session.update((old) => {
-							return { ...old, loading: true };
-						});
-						await signOut(auth).catch((e) => {
-							console.error(e);
-							throw e;
-						});
-						session.update((old) => {
-							return {
-								...old,
-								user: null,
-								loading: false,
-								loggedIn: false
-							};
-						});
-					}}
-				>
-					Logout
-				</A>
-			{:else}
-				<A href="/login">Login</A>
-				<A href="/signup">Sign Up</A>
-			{/if}
-		</NavUl>
+	<NavUl {hidden}>
+		{#if loggedIn}
+			<A
+				class="p-2.5"
+				on:click={async () => {
+					session.update((old) => {
+						return { ...old, loading: true };
+					});
+					await signOut(auth).catch((e) => {
+						console.error(e);
+						throw e;
+					});
+					session.update((old) => {
+						return {
+							...old,
+							user: null,
+							loading: false,
+							loggedIn: false
+						};
+					});
+				}}
+			>
+				Logout
+			</A>
+		{:else}
+			<A class="p-2.5" href="/login">Login</A>
+			<A class="p-2.5" href="/signup">Sign Up</A>
+		{/if}
 		<DarkMode />
-	</div>
+	</NavUl>
 </Navbar>

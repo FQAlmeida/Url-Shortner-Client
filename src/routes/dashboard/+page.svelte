@@ -17,7 +17,7 @@
 	});
 </script>
 
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-8 mt-4">
 	<Heading class="text-3xl">Dashboard</Heading>
 	<hr />
 	<SlugCreateForm />

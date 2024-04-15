@@ -14,7 +14,7 @@
 			href="https://flowbite.com"
 			src="https://flowbite-svelte.com/images/flowbite-svelte-icon-logo.svg"
 			alt="Flowbite Logo"
-			name="URL Shortner"
+			name="URL Shortener"
 		/>
 		<FooterLinkGroup
 			ulClass="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400"
@@ -26,5 +26,5 @@
 		</FooterLinkGroup>
 	</div>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
-	<FooterCopyright href="/" by="URL Shortner" />
+	<FooterCopyright href="/" by="URL Shortener" />
 </Footer>

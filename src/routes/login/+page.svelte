@@ -37,8 +37,6 @@
 		const provider = new GoogleAuthProvider();
 		await signInWithPopup(auth, provider)
 			.then((result) => {
-				console.log(result);
-
 				const { displayName, email, photoURL, uid } = result?.user;
 				session.set({
 					loggedIn: true,
@@ -84,7 +82,7 @@
 	<div class="flex h-12 flex-row gap-2">
 		<Button class="min-h-full" on:click={loginWithMail}>Login</Button>
 		<Button class="flex min-h-full flex-row gap-2" on:click={loginWithGoogle}>
-			Signin with
+			Sign in with
 			<GoogleSolid />
 		</Button>
 	</div>
