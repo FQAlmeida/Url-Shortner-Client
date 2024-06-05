@@ -52,7 +52,7 @@
 			/>
 		</div>
 		<div class="">
-			<Label for="confirm_password" class="mb-2 block">Cinfirmar Senha</Label>
+			<Label for="confirm_password" class="mb-2 block">Confirmar Senha</Label>
 			<Input
 				id="confirm_password"
 				type="password"

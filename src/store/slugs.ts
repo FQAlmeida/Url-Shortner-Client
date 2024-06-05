@@ -8,7 +8,7 @@ export type Slug = {
     redirect: string;
 };
 
-export const error = writable<any>(null);
+export const error = writable<unknown>(null);
 
 const create_slugs_store = async () => {
     const { update, subscribe, set } = writable<Slug[]>([]);
@@ -30,7 +30,7 @@ const create_slugs_store = async () => {
     };
 
     session.subscribe((s) => {
-        if (!!s.user) {
+        if (s.user) {
             reset_slugs();
         }
     });
